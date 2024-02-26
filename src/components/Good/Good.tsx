@@ -1,8 +1,8 @@
 import { FC } from "react";
 import styles from './GoodsList.module.css';
 
-const GoodsList: FC = () => {
+const Good: FC = () => {
   return <div className={styles.goods}>Goods</div>
 };
 
-export default GoodsList;
+export default Good;
