@@ -1,0 +1,8 @@
+.good {
+  padding: 10px;
+  border: 1px black solid;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
