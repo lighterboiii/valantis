@@ -6,12 +6,13 @@ interface IGood {
 }
 
 const Good: FC<IGood> = ({ item }) => {
+  console.log(item);
   return (
     <li key={item.id} className={styles.good}>
-      <p>{item.product}</p>
-      <p>{item.brand}</p>
-      <p>{item.price}</p>
-      <p>id: {item.id}</p>
+      <p className={styles.good__brand}>{item.brand}</p>
+      <p className={styles.good__name}>{item.product}</p>
+      <p className={styles.good__price}>Стоимость: {item.price}</p>
+      <p className={styles.good__id}>Артикул: {item.id}</p>
     </li>
   )
 };

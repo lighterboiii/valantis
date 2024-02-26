@@ -23,23 +23,27 @@ const GoodsList: FC = () => {
   }
   console.log(goodsList);
   console.log(totalPages);
-// получение данных при монтировании компонента
+  // получение данных при монтировании компонента
   useEffect(() => {
     getDataFromServer();
   }, [])
-// функция, фильтрующая товары на основе строки в инпуте
-  const filterGoods = (str: string) => { // типизация
-    const filtered = goodsList.filter((item: any) =>
-      item.product.toLowerCase.includes(str.toLowerCase()) ||
-      item.id.toLowerCase.includes(str.toLowerCase()) ||
-      (item.brand && item.brand.toLowerCase.includes(str.toLowerCase())) ||
-      (item.price && item.price.toString().toLowerCase().includes(str.toLowerCase()))
-    )
+  // функция, фильтрующая товары на основе строки в инпуте
+  const filterGoods = (str: string) => {
+    const filtered = goodsList.filter((product: any) => {
+        const productNameMatch = product.product.toLowerCase().includes(str.toLowerCase());
+        const idMatch = product.id.toLowerCase().includes(str.toLowerCase());
+        const brandMatch = product.brand && product.brand.toLowerCase().includes(str.toLowerCase());
+        const priceMatch = product.price && product.price.toString().toLowerCase().includes(str.toLowerCase());
+
+        return productNameMatch || idMatch || brandMatch || priceMatch;
+    });
+
     setFilteredGoods(filtered);
     setTotalPages(Math.ceil(filtered.length / 50));
     setPage(1);
-  };
-// хэндлер для фильтрации
+};
+
+  // хэндлер для фильтрации
   const handleFilterGoods = (evt: ChangeEvent<HTMLInputElement>) => {
     setSearchString(evt.target.value);
     filterGoods(evt.target.value);
@@ -51,20 +55,22 @@ const GoodsList: FC = () => {
 
   return (
     <div className={styles.goods}>
-      <input
-        type="text"
-        name="goodsFilter"
-        placeholder="Поиск товара"
-        value={searchString}
-        onChange={handleFilterGoods}
-        className={styles.goods__input}
-      />
-      <ul className={styles.goods__list}>
-      {setPagination(filteredGoods, 50, page).map((item: any) => (
-        <Good 
-          item={item}
+      <div className={styles.goods__inputWrapper}>
+        <input
+          type="text"
+          name="goodsFilter"
+          placeholder="Поиск товара"
+          value={searchString}
+          onChange={handleFilterGoods}
+          className={styles.goods__input}
         />
-      ))}
+      </div>
+      <ul className={styles.goods__list}>
+        {setPagination(filteredGoods, 50, page).map((item: any) => (
+          <Good
+            item={item}
+          />
+        ))}
       </ul>
     </div>
   )

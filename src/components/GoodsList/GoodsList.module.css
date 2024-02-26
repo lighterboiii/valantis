@@ -1,16 +1,33 @@
 .goods {
+  margin: 0 auto;
+}
+
+.goods__list {
+  margin: 0 auto;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* display: flex;
+  flex-direction: row;
+  justify-content: flex-start; */
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.goods__inputWrapper {
+  margin: 0 auto;
+  width: 50%;
+  height: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.goods__list {
-  margin: 0 auto;
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: wrap;
-  gap: 16px;
+.goods__input {
+  width: 100%;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px black solid;
 }

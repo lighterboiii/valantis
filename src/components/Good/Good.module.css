@@ -1,8 +1,41 @@
 .good {
   padding: 10px;
   border: 1px black solid;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  gap: 8px;
+}
+
+.good__name {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  color: #000;
+  align-self: center;
+  text-align: center;
+}
+
+.good__brand {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1;
+  color: #542c61;
+  align-self: flex-end;
+}
+
+.good__price {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1;
+  color: blue;
+}
+
+.good__id {
+  font-weight: 200;
+  font-size: 12px;
+  line-height: 1;
+  color: rgb(87, 87, 87);
 }
