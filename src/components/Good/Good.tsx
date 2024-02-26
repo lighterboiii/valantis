@@ -6,7 +6,7 @@ interface IGood {
 }
 
 const Good: FC<IGood> = ({ item }) => {
-  console.log(item);
+
   return (
     <li key={item.id} className={styles.good}>
       <p className={styles.good__brand}>{item.brand}</p>

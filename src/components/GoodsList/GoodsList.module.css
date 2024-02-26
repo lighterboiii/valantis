@@ -1,5 +1,8 @@
 .goods {
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .goods__list {
@@ -7,9 +10,6 @@
   list-style: none;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /* display: flex;
-  flex-direction: row;
-  justify-content: flex-start; */
   gap: 12px;
   flex-wrap: wrap;
   width: 80%;
@@ -30,4 +30,28 @@
   padding: 16px;
   border-radius: 10px;
   border: 1px black solid;
+}
+
+.goods__buttons {
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.goods__button {
+  border: .3px black solid;
+  border-radius: 5px;
+  background-color: transparent;
+  padding: 12px 60px;
+  height: 4rem;
+}
+
+@media screen and (max-width: 768px) {
+  .goods__list {
+    grid-template-columns: auto;
+  }
 }
