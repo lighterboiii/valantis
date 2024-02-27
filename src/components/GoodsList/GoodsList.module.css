@@ -55,4 +55,13 @@
   .goods__list {
     grid-template-columns: auto;
   }
+
+  .goods__buttons {
+    padding: 6px;
+    gap: 8px;
+  }
+
+  .goods__button {
+    padding: 8px;
+  }
 }
