@@ -6,3 +6,15 @@ export const sliceIdArray = (array: string[], limit: number) => {
   }
   return sliced;
 };
+// функция получения уникальных продуктов
+export const getUnique = <T>(arr: T[], key: keyof T): T[] => {
+  const notUnique: { [key: string]: boolean } = {};
+  return arr.filter((item) => {
+    const value = item[key];
+    if (!notUnique[value as string]) {
+      notUnique[value as string] = true;
+      return true;
+    }
+    return false;
+  });
+};

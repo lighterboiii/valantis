@@ -4,23 +4,25 @@ import styles from './GoodsList.module.css';
 import { getGoods } from "../api/api";
 import Good from "../Good/Good";
 import { TItem } from "../../utils/types";
+import Loader from "../Loader/Loader";
+import { getUnique } from "../../utils/additional";
 
 const GoodsList: FC = () => {
-  const [goodsList, setGoodsList] = useState<TItem[]>([]); // типизировать
+  const [goodsList, setGoodsList] = useState<TItem[]>([]);
   const [page, setPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(1);
   const [searchString, setSearchString] = useState<string>('');
-  const [filteredGoods, setFilteredGoods] = useState<TItem[]>([]); // типизировать
-  
-  // // подсчёт количества страниц в зависимости от количества элементов
-  // const pages = Math.ceil(goodsList.length / 50);
-  // console.log(page);
-  // console.log(totalPages);
+  const [filteredGoods, setFilteredGoods] = useState<TItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  // получаем и обрабатываем товары
   const getDataFromServer = async () => {
     const products = await getGoods();
-    setGoodsList(products.flat());
-    setFilteredGoods(products.flat());
-    setTotalPages(Math.ceil(goodsList.length / 50));
+    const allProducts= products.flat();
+    const uniqueProducts = getUnique(allProducts, 'id');
+    setGoodsList(uniqueProducts);
+    setFilteredGoods(uniqueProducts);
+    setTotalPages(Math.ceil(uniqueProducts.length / 50));
+    setLoading(!loading);
   }
   // получение данных при монтировании компонента
   useEffect(() => {
@@ -55,6 +57,10 @@ const GoodsList: FC = () => {
     setPage(page);
   };
 
+  if (loading) {
+    return <Loader text="Загрузка товаров..." />
+  }
+
   return (
     <div className={styles.goods}>
       <div className={styles.goods__inputWrapper}>
@@ -85,6 +91,7 @@ const GoodsList: FC = () => {
 
           Предыдущая страница
         </button>
+        <div>{page}/{totalPages}</div>
         <button
           type="button"
           className={styles.goods__button}

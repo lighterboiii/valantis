@@ -12,7 +12,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
   flex-wrap: wrap;
-  width: 80%;
+  width: 95%;
 }
 
 .goods__inputWrapper {
@@ -48,6 +48,7 @@
   background-color: transparent;
   padding: 12px 60px;
   height: 4rem;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 768px) {

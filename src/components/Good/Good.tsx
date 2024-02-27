@@ -1,8 +1,9 @@
 import { FC } from "react";
 import styles from './Good.module.css';
+import { TItem } from "../../utils/types";
 
 interface IGood {
-  item: any;
+  item: TItem;
 }
 
 const Good: FC<IGood> = ({ item }) => {
