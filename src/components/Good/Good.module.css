@@ -10,6 +10,7 @@
 }
 
 .good:hover {
+  cursor: pointer;
   box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.1);
 }
 
